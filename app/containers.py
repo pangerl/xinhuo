@@ -7,7 +7,7 @@ from logging.handlers import RotatingFileHandler
 
 
 class Container(containers.DeclarativeContainer):
-    db_session_provider = providers.Factory(
+    db_session_provider = providers.Singleton(
         AsyncSessionLocal
     )
 

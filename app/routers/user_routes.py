@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.schemas.user import UserCreate, UserInDB
 import logging
-# from app.db.database import get_db
+from app.db.database import get_db
 from dependency_injector.wiring import inject, Provide
 from app.containers import Container
 from app.db import crud
@@ -14,7 +14,7 @@ router = APIRouter(prefix="/users", tags=["users"])
 @inject
 async def create_user(
     user: UserCreate,
-    db: AsyncSession = Depends(Provide[Container.db_session_provider])
+    db: AsyncSession = Depends(get_db)
 ):
     try:
         # 调用数据库操作函数创建用户

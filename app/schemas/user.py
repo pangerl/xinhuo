@@ -13,6 +13,7 @@ class UserCreate(UserBase):
 class UserUpdate(BaseModel):
     email: EmailStr | None = None
     username: str | None = None
+    password: str | None = None
 
 
 class UserInDB(UserBase):

@@ -22,13 +22,6 @@ def main():
     log_dir = Path(args.log_dir)
     log_dir.mkdir(parents=True, exist_ok=True)
 
-    # 配置日志
-    logging.basicConfig(
-        filename=log_dir / 'server.log',
-        level=logging.INFO if args.env == 'prod' else logging.DEBUG,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    )
-
     # 启动参数
     server_config = {
         'host': args.host,
