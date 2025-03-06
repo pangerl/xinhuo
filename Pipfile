@@ -4,12 +4,14 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-fastapi = "*"
 uvicorn = "*"
-sqlalchemy = {extras = ["asyncio"], version = "*"}
 pydantic = "*"
 dependency-injector = "*"
+fastapi = "*"
+sqlalchemy = {extras = ["asyncio"], version = "*"}
 aiosqlite = "*"
+alembic = "*"
+
 [dev-packages]
 
 [requires]

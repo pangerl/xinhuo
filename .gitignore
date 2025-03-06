@@ -171,3 +171,7 @@ cython_debug/
 .pypirc
 
 .DS_Store
+logs/
+test.db
+migrations/
+.idea/

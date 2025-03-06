@@ -3,7 +3,7 @@ import os
 import logging
 from pathlib import Path
 import uvicorn
-from app.main import app
+
 
 def main():
     parser = argparse.ArgumentParser(description='启动FastAPI服务器')
@@ -15,6 +15,7 @@ def main():
 
     # 环境配置
     os.environ['ENV_MODE'] = args.env
+    # os.environ['PYTHONPATH'] = str(Path(__file__).parent)
     os.environ.setdefault('DATABASE_URL', 'sqlite+aiosqlite:///./test.db')
 
     # 创建日志目录
@@ -23,7 +24,7 @@ def main():
 
     # 配置日志
     logging.basicConfig(
-        filename=log_dir/'server.log',
+        filename=log_dir / 'server.log',
         level=logging.INFO if args.env == 'prod' else logging.DEBUG,
         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
@@ -40,6 +41,7 @@ def main():
         'app.main:app',
         **server_config
     )
+
 
 if __name__ == '__main__':
     main()
